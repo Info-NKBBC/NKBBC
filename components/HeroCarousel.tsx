@@ -10,7 +10,7 @@ const slides = [
     buttonText: '線上報名'
   },
   {
-    img: '/images/hero2.jpg',
+    img: '/images/hero2.JPG',
     title: '信仰之旅',
     subtitle: '還有內父母成長、親密之旅、理財有道等課程',
     buttonText: '了解我們'
