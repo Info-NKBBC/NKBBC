@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 強制電腦版導航列橫向排列 */
+.nav-desktop {
+  @apply hidden lg:flex flex-row items-center gap-8 text-white;
+}
+
+/* 強制電腦版 ul 橫向排列 */
+ul.lg\:flex-row {
+  @apply flex-row !important;
+}
+
+/* 自訂全站排版 */
+body {
+  @apply text-gray-800 bg-white font-sans;
+}
+a {
+  @apply text-primary hover:underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 全站字型設定 */
+
+
+/* 查看文件是否存在 */ 
