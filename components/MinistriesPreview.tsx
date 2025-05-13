@@ -1,5 +1,9 @@
 'use client';
+
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Mousewheel } from 'swiper/modules';
+import 'swiper/css/pagination';
 
 type CardType = {
   title: string;
@@ -38,38 +42,61 @@ const cards: CardType[] = [
 
 export default function MinistriesPreview() {
   return (
-    <section className="py-12 w-full flex justify-center bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100">
-      <div className="w-[80%]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+    <section className="py-8 md:py-12 w-full flex justify-center bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100">
+      <div className="w-[90%] md:w-[80%]">
+        {/* 手機版：橫向滑動輪播 */}
+        <div className="md:hidden w-full pb-8">
+          <Swiper
+            slidesPerView={1.1}
+            spaceBetween={16}
+            pagination={{ clickable: true }}
+            mousewheel={true}
+            modules={[Pagination, Mousewheel]}
+            className="w-full pb-10"
+          >
+            {cards.map((card) => (
+              <SwiperSlide key={`mobile-${card.title}`} className="h-auto">
+                <Card card={card} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        
+        {/* 桌面版：網格佈局 */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
           {cards.map((card) => (
-            <div 
-              key={card.title}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              <img 
-                src={card.img} 
-                alt={card.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                {card.time && (
-                  <p className="text-gray-700 mb-1">{card.time}</p>
-                )}
-                <p className="text-gray-600">
-                  {card.href ? (
-                    <Link href={card.href} className="hover:underline">
-                      {card.location}
-                    </Link>
-                  ) : (
-                    card.location
-                  )}
-                </p>
-              </div>
-            </div>
+            <Card key={`desktop-${card.title}`} card={card} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+// 抽離卡片組件
+function Card({ card }: { card: CardType }) {
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+      <img 
+        src={card.img} 
+        alt={card.title}
+        className="w-full h-40 md:h-48 object-cover"
+      />
+      <div className="p-4 md:p-6 flex-grow">
+        <h3 className="text-lg md:text-xl font-bold mb-2">{card.title}</h3>
+        {card.time && (
+          <p className="text-gray-700 text-sm md:text-base mb-1">{card.time}</p>
+        )}
+        <p className="text-gray-600 text-sm md:text-base">
+          {card.href ? (
+            <Link href={card.href} className="hover:underline">
+              {card.location}
+            </Link>
+          ) : (
+            card.location
+          )}
+        </p>
+      </div>
+    </div>
   );
 }

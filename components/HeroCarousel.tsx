@@ -25,7 +25,7 @@ const slides = [
 
 export default function HeroCarousel() {
   return (
-    <div className="w-screen h-[calc(100vw/2.3)] md:h-auto md:aspect-[23/10] aspect-auto relative overflow-hidden">
+    <div className="w-screen h-[56.25vw] md:h-auto md:aspect-[23/10] aspect-auto relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
         <Swiper className="max-h-full max-w-full w-full" 
                   modules={[Autoplay, Pagination]}

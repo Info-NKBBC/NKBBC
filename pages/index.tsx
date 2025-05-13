@@ -34,7 +34,7 @@ export default function Home() {
                 frameBorder="0"
                 scrolling="no"
                 title="教會行事曆"
-                className="w-full min-w-[320px]"
+                className="w-full min-w-[320px] h-[100vw] md:h-[600px]"
               ></iframe>
             </div>
           </div>
