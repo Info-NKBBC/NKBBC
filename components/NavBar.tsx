@@ -100,42 +100,56 @@ export default function NavBar() {
       </div>
       {/* 手機版全螢幕浮層選單 */}
       {open && (
-        <div className="fixed inset-0 z-[99] bg-black/80 flex flex-col lg:hidden">
-          {/* 手機版 Banner */}
-          <div className="flex items-center justify-between w-full px-6 py-4 bg-gray-750">
-            <Link href="/">
-              <div className="h-12 cursor-pointer">
+        <div className="fixed inset-0 z-[99] bg-gradient-to-b from-gray-900 to-gray-800 flex flex-col lg:hidden overflow-y-auto">
+          {/* 手機版 Header */}
+          <div className="flex items-center justify-between w-full px-5 py-4 bg-gray-900/80 backdrop-blur-sm border-b border-gray-700">
+            <Link href="/" className="flex-shrink-0">
+              <div className="h-10 cursor-pointer">
                 <img src="/images/logo-horizontal.png" alt="南科福氣教會" className="h-full w-auto" />
               </div>
             </Link>
-            <button className="text-white" onClick={()=>setOpen(false)}>
-              <X size={32}/>
+            <button 
+              className="text-gray-300 hover:text-white p-2 -mr-2" 
+              onClick={()=>setOpen(false)}
+              aria-label="關閉選單"
+            >
+              <X size={28} />
             </button>
           </div>
+          
           {/* 手機版選單內容 */}
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <ul className="space-y-8 text-white text-2xl font-bold">
+          <div className="flex-1 w-full px-5 py-8">
+            <ul className="space-y-1">
               {links.map(l =>
                 l.isAbout ? (
-                  <li key={l.name} className="inline-block">
+                  <li key={l.name} className="mb-2">
                     <button
-                      className="flex items-center gap-2 hover:text-pink-400"
+                      className="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-white bg-gray-800/50 hover:bg-gray-700/80 rounded-lg transition-all duration-200"
                       onClick={e => {
                         e.preventDefault();
                         setAboutOpen(o => !o);
                       }}
                     >
-                      {l.name}
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span>{l.name}</span>
+                      <svg 
+                        className={`w-5 h-5 ml-2 transition-transform duration-200 ${aboutOpen ? 'transform rotate-180' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {aboutOpen && (
-                      <ul className="mt-2 space-y-2 bg-gray-750 rounded shadow-lg border border-gray-600 p-2">
+                      <ul className="mt-1 ml-4 space-y-1 border-l-2 border-pink-500/20 pl-3 py-2">
                         {aboutLinks.map(sub => (
                           <li key={sub.name}>
-                            <a href={sub.href} className="block px-4 py-2 text-white hover:bg-pink-200 hover:text-white transition-all duration-300 relative overflow-hidden group">
-                              <span className="relative z-10">{sub.name}</span>
+                            <a 
+                              href={sub.href} 
+                              className="block px-4 py-2 text-gray-200 hover:text-white hover:bg-pink-500/10 rounded-md transition-all duration-200"
+                              onClick={() => setOpen(false)}
+                            >
+                              {sub.name}
                             </a>
                           </li>
                         ))}
@@ -143,11 +157,29 @@ export default function NavBar() {
                     )}
                   </li>
                 ) : (
-                  <li key={l.name} className="inline-block">
-                    <a href={l.href} rel="noopener noreferrer" className="hover:text-pink-400">{l.name}</a>
+                  <li key={l.name} className="mb-2">
+                    <a 
+                      href={l.href} 
+                      rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={l.href.startsWith('http') ? '_blank' : undefined}
+                      className="block w-full px-4 py-3 text-lg font-medium text-white hover:bg-gray-700/50 rounded-lg transition-all duration-200"
+                      onClick={() => setOpen(false)}
+                    >
+                      {l.name}
+                    </a>
                   </li>
                 )
               )}
+              {/* 線上奉獻按鈕 */}
+              <li className="mt-6">
+                <a 
+                  href="/donate" 
+                  className="block w-full px-6 py-3 text-center text-lg font-bold text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-full shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                  onClick={() => setOpen(false)}
+                >
+                  線上奉獻
+                </a>
+              </li>
             </ul>
           </div>
         </div>

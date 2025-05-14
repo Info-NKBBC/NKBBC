@@ -11,12 +11,18 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#008080', // 先前淺色品牌色
+        primary: '#008080',
         secondary: '#FFD700',
         'gray-750': '#23272f',
       },
       backgroundImage: {
         'hero-gradient': 'linear-gradient(to bottom right, #008080, #FFD700)',
+      },
+      blur: {
+        '3xl': '64px',
+      },
+      mixBlendMode: {
+        'multiply': 'multiply',
       },
     },
   },
