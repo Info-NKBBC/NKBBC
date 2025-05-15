@@ -43,35 +43,32 @@ const cards: CardType[] = [
 export default function MinistriesPreview() {
   return (
     <section className="relative pt-12 pb-16 md:pb-24 w-full flex justify-center">
-      {/* 動態漸層背景 */}
+      {/* 簡化漸層背景 */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* 柔和粉彩色漸層背景 */}
+        {/* 基礎漸層層 */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at 20% 30%, rgba(230, 204, 255, 0.7) 0%, transparent 40%), ' +
-                      'radial-gradient(circle at 80% 70%, rgba(255, 204, 230, 0.6) 0%, transparent 45%), ' +
-                      'radial-gradient(circle at 50% 50%, rgba(204, 230, 255, 0.5) 0%, transparent 60%)',
-            backgroundBlendMode: 'overlay',
+            background: 'linear-gradient(135deg, #ff8a8a 0%, #ba68c8 50%, #64b5f6 100%)',
+            opacity: 0.9,
           }}
         />
+        
+        {/* 紋理層 */}
+        <div 
+          className="absolute inset-0 opacity-70"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '20px 20px',
+          }}
+        />
+        
         {/* 柔光效果 */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%)',
+            background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.3) 0%, transparent 30%)',
             mixBlendMode: 'overlay',
-          }}
-        />
-        {/* 角落暈染效果 */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(circle at 0% 0%, rgba(200, 180, 255, 0.2) 0%, transparent 30%), ' +
-                      'radial-gradient(circle at 100% 0%, rgba(255, 180, 200, 0.15) 0%, transparent 25%), ' +
-                      'radial-gradient(circle at 0% 100%, rgba(180, 210, 255, 0.15) 0%, transparent 25%), ' +
-                      'radial-gradient(circle at 100% 100%, rgba(200, 220, 255, 0.2) 0%, transparent 30%)',
-            pointerEvents: 'none',
           }}
         />
       </div>

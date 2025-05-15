@@ -1,27 +1,271 @@
 'use client';
+import Link from 'next/link';
+import { Mail, MapPin, Phone, Clock, Facebook, Youtube, Instagram, Line } from 'lucide-react';
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-300 text-gray-800 py-8">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-            <div className="mb-4 md:mb-0">
-              <img 
-                src="/images/logo-horizontal.png" 
-                alt="南科福氣教會"
-                className="h-10 w-auto"
-              />
+    <footer className="bg-white border-t border-gray-200 w-full">
+      {/* 手機版簡化設計 */}
+      <div className="lg:hidden w-full bg-white/90 backdrop-blur-sm py-6 sticky bottom-0 z-10">
+        <div className="container mx-auto px-4">
+          <div className="space-y-6">
+            <div className="pl-4">
+              <div className="flex flex-col space-y-4">
+                <div className="flex justify-center space-x-4 pt-2">
+                  <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
+                    <Facebook size={20} />
+                  </a>
+                  <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
+                    <Instagram size={20} />
+                  </a>
+                  <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
+                    <Youtube size={20} />
+                  </a>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-rose-500">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <span className="font-medium text-gray-800">聚會地址：</span>
+                    <span className="text-gray-600">南科育成中心 B101 國際會議廳</span>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-rose-500">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <span className="font-medium text-gray-800">電話：</span>
+                    <span className="text-gray-600">0929-327-486；</span>
+                    <span className="text-gray-600">06-5834626</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-center md:text-left border-l-0 md:border-l border-gray-600 pl-0 md:pl-6 py-1">
-              <p className="text-gray-800 text-sm">聚會地址：南科育成中心 B101 國際會議廳</p>
-              <p className="text-gray-800 text-sm mt-0.5">電話：0929327486， 06-5834626</p>
+            <div className="text-center">
+              <div className="text-gray-600 text-xs">
+                {currentYear} 南科福氣教會 版權所有
+              </div>
             </div>
           </div>
-          <div className="text-center md:text-right mt-4 md:mt-0">
-            <p className="text-gray-600 text-xs whitespace-nowrap">2025 南科福氣教會. All Rights Reserved.</p>
+        </div>
+      </div>
+
+      {/* 桌面版設計保持不變 */}
+      <div className="hidden lg:block w-full bg-gradient-to-br from-rose-50 via-amber-50 to-cyan-50 pt-12 pb-8">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-4 gap-8 mb-8">
+            {/* 教會資訊 */}
+            <div className="space-y-4">
+              <Link href="/" className="inline-block">
+                <img 
+                  src="/images/logo-horizontal.png" 
+                  alt="南科福氣教會"
+                  className="h-12 w-auto"
+                />
+              </Link>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                我們是一群追隨耶穌的門徒，致力於建立一個充滿愛與盼望的信仰群體，
+                透過真理的教導和生命的見證，將福音帶給每一個人。
+              </p>
+              <div className="flex space-x-4 pt-2">
+                <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:text-rose-600 transition-colors">
+                  <Youtube size={20} />
+                </a>
+                <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors">
+                  <Instagram size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* 快速連結 */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
+                快速連結
+                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-rose-400 to-amber-400"></span>
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    href="/"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    首頁
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    關於我們
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about/gatherings"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    聚會資訊
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="https://www.youtube.com/@南科福氣教會/featured"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    影音平台
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/events"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    活動報名
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/contact"
+                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
+                    聯絡我們
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* 關於我們 */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
+                關於我們
+                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-amber-400 to-cyan-400"></span>
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    href="/about/vision-mission"
+                    className="text-gray-600 hover:text-amber-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span>
+                    異象與使命
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about/implementation"
+                    className="text-gray-600 hover:text-amber-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span>
+                    實行之路
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about/strategy"
+                    className="text-gray-600 hover:text-amber-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span>
+                    教會策略
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about/core-values"
+                    className="text-gray-600 hover:text-amber-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span>
+                    教會核心價值
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about/gatherings"
+                    className="text-gray-600 hover:text-amber-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span>
+                    各種成全聚會
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* 聯絡資訊 */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
+                聯絡我們
+                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-cyan-400 to-rose-400"></span>
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <MapPin className="flex-shrink-0 h-5 w-5 text-rose-500 mt-0.5" />
+                  <span className="ml-3 text-gray-600 text-sm">
+                    聚會地址：<br />南科育成中心 B101 國際會議廳
+                  </span>
+                </li>
+                <li className="flex items-center">
+                  <Phone className="h-5 w-5 text-amber-500" />
+                  <a href="tel:+886929327486" className="ml-3 text-gray-600 hover:text-amber-600 transition-colors text-sm">
+                    0929-327-486
+                  </a>
+                  <span className="mx-2 text-gray-400">/</span>
+                  <a href="tel:+8865834626" className="text-gray-600 hover:text-amber-600 transition-colors text-sm">
+                    06-5834626
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <Mail className="h-5 w-5 text-cyan-500" />
+                  <a href="mailto:contact@example.com" className="ml-3 text-gray-600 hover:text-cyan-600 transition-colors text-sm">
+                    contact@example.com
+                  </a>
+                </li>
+                <li className="flex items-start">
+                  <Clock className="flex-shrink-0 h-5 w-5 text-rose-400 mt-0.5" />
+                  <span className="ml-3 text-gray-600 text-sm">
+                    主日聚會時間：<br />每週日 上午 10:00-12:00
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 版權資訊 */}
+          <div className="border-t border-gray-200 pt-6 mt-6">
+            <div className="flex justify-between items-center">
+              <p className="text-gray-500 text-sm">
+                © {currentYear} 南科福氣教會 版權所有
+              </p>
+              <div className="flex space-x-4">
+                <Link href="/privacy" className="text-gray-500 hover:text-rose-500 text-sm transition-colors">
+                  隱私權政策
+                </Link>
+                <span className="text-gray-300">|</span>
+                <Link href="/terms" className="text-gray-500 hover:text-rose-500 text-sm transition-colors">
+                  使用條款
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -21,6 +21,7 @@ const slides = [
     subtitle: '耶穌愛您，上帝祝福您！',
     buttonText: '加入我們'
   }
+
 ]
 
 export default function HeroCarousel() {
@@ -47,16 +48,13 @@ export default function HeroCarousel() {
                           loading="lazy"
                         />
                         <div className="absolute inset-0 pointer-events-none">
-  {/* 主漸層：左上藍紫、中間淡藍白、右下粉紫 */}
-  <div className="absolute inset-0 bg-gradient-to-br" style={{background: 'linear-gradient(135deg, #7f8fdc 0%, #e5e7fa 60%, #f5d3e6 100%)', opacity: 0.38}} />
-  {/* 疊加一層紫色柔光 */}
-  <div className="absolute inset-0" style={{background: 'rgba(127,143,220,0.07)'}} />
-</div>
+                          <div className="absolute inset-0 bg-gradient-to-br" style={{background: 'linear-gradient(135deg, #7f8fdc 0%, #e5e7fa 60%, #f5d3e6 100%)', opacity: 0.38}} />
+                          <div className="absolute inset-0" style={{background: 'rgba(127,143,220,0.07)'}} />
+                        </div>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center text-white z-10 max-w-2xl px-4 pt-8 md:pt-0">
                             <h1 className="text-xl md:text-5xl font-bold mb-4 whitespace-nowrap">{s.title}</h1>
                             <p className="text-base md:text-2xl mb-8">{s.subtitle}</p>
-                            
                           </div>
                         </div>
                       </div>

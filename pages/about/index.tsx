@@ -1,60 +1,84 @@
+import { motion } from 'framer-motion'
+import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import Head from 'next/head'
-
 
 export default function About() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
   return (
-    <>
+    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Head>
         <title>關於我們 | 南科福氣教會</title>
         <meta name="description" content="了解南科福氣教會的歷史與使命" />
       </Head>
+      
       <NavBar />
-      <div style={{ height: '80px' }} />
-      <main className="container mx-auto px-4 py-12 mt-0">
-        <section id="about-top" className="mb-12 pt-32">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-10 text-gray-800">
-            <span className="relative pb-2 inline-block">
-              關於我們
-              <svg className="absolute -bottom-1 w-full" xmlns="http://www.w3.org/2000/svg" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
-                <path d="M0,6 C30,2 70,2 100,6 L100,0 L0,0 Z" fill="#0d9488" />
-              </svg>
-            </span>
-          </h1>
-          <div className="max-w-4xl mx-auto mt-10 flex flex-col md:flex-row items-center md:items-start gap-8">
-            {/* 照片區塊 */}
-            <div className="flex-shrink-0 flex justify-center w-full md:w-1/2">
-              <img src="/images/about.jpg" alt="教會照片" className="rounded-xl shadow-lg max-h-[350px] object-cover mx-auto" />
-            </div>
-            {/* 介紹文字區塊 */}
-            <div className="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
-              <p className="text-xl leading-relaxed text-gray-700 mb-4">
-                南科福氣教會成立於 2010 年，致力於分享福音、牧養群體、關懷社區，成為人人都能經歷神同在與恩典的屬靈家園。
+      
+      <main className="flex-grow">
+        {/* 主標題區塊 */}
+        <section className="relative pt-32 pb-12 md:pt-48 md:py-28 bg-gradient-to-r from-amber-50 via-orange-50 to-red-50">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 md:mb-6">
+                關於我們
+              </h1>
+              <div className="w-20 h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto rounded-full"></div>
+              <p className="mt-4 text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+                <span className="hidden md:block">南科福氣教會成立於 2010 年，致力於分享福音、牧養群體、關懷社區，</span>
+                <span className="hidden md:block">成為人人都能經歷神同在與恩典的屬靈家園。</span>
+                <span className="md:hidden">南科福氣教會成立於 2010 年，致力於分享福音、牧養群體、關懷社區，成為人人都能經歷神同在與恩典的屬靈家園。</span>
               </p>
-            </div>
+            </motion.div>
           </div>
-          
-          <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-teal-800 to-teal-700 rounded-lg p-10 shadow-xl text-center">
-            <div className="space-y-8">
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                我們在 <span className="text-yellow-300">基督的愛</span> 中成長
-              </p>
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                天天追求並經歷 <span className="text-yellow-300">基督的豐富</span>
-              </p>
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                成為 <span className="text-yellow-300">耶穌基督</span>『<span className="text-yellow-300">道成肉身</span>』的見證人
-              </p>
+        </section>
 
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                以 <span className="text-yellow-300">建造榮耀的教會</span>
+        {/* 教會介紹區塊 */}
+        <section className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* 照片區塊 */}
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <img 
+                src="/images/about.jpg" 
+                alt="教會照片" 
+                className="w-full rounded-xl shadow-lg aspect-[4/3] object-cover"
+              />
+            </motion.div>
+
+            {/* 介紹文字區塊 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-6"
+            >
+              <h2 className="text-3xl font-bold text-gray-800">教會宗旨</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                我們在基督的愛中成長，天天追求並經歷基督的豐富，成為耶穌基督道成肉身的見證人，以建造榮耀的教會。
               </p>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
+      
       <Footer />
-    </>
+    </div>
   )
 } 
