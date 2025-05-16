@@ -8,7 +8,6 @@ export default function SeoHead() {
   const siteImageWidth = '1200';
   const siteImageHeight = '630';
   const siteImageAlt = '南科福氣教會標誌';
-  const fbAppId = '1234567890'; // 請替換為您的 Facebook App ID
 
   return (
     <Head>
@@ -19,7 +18,6 @@ export default function SeoHead() {
       <link rel="icon" href="/favicon.ico" />
 
       {/* Open Graph / Facebook */}
-      <meta property="fb:app_id" content={fbAppId} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={siteUrl} />
       <meta property="og:title" content={siteTitle} />

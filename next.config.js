@@ -11,6 +11,14 @@ module.exports = {
         port: '',
         pathname: '/featured/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'nanke-blessing.vercel.app',
+        port: '',
+        pathname: '/images/**',
+      },
     ],
   },
+  output: 'export',
+  trailingSlash: true,
 };
