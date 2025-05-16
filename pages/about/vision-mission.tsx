@@ -81,9 +81,11 @@ export default function VisionMission() {
                   <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                     <div className="p-3 md:p-4 bg-gray-50 rounded-lg border-l-4 border-pink-400">
                       <p className="text-gray-700">
-                        <span className="font-bold text-pink-600">『基督』</span> － 基督是一切，又在之內
-                        <span className="block text-sm text-gray-500 mt-1">(Christ is all & in all)</span>
+                        <span className="font-bold text-pink-600">『基督』</span> － 基督是一切，<br className="md:hidden" />又在一切之內
                       </p>
+                      <div className="text-center mt-2">
+                        <span className="text-sm text-gray-500">(Christ is all & in all)</span>
+                      </div>
                     </div>
                     
                     <div className="p-3 md:p-4 bg-gray-50 rounded-lg border-l-4 border-orange-400">

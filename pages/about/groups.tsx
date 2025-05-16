@@ -2,36 +2,46 @@ import NavBar from '@/components/NavBar'
 import SmallGroup from '@/components/SmallGroup'
 import Footer from '@/components/Footer'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 export default function Groups() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
       <Head>
         <title>我們的小組 | 南科福氣教會</title>
         <meta name="description" content="了解南科福氣教會的小組服事與小組生活" />
       </Head>
+      
       <NavBar />
-      <main>
-        <div className="pt-24">
-          <section className="container mx-auto py-16 px-6 text-dark">
-            <h1 className="text-4xl md:text-5xl font-bold text-center mb-10 text-gray-800">
-              <span className="relative pb-2 inline-block">
+      
+      <main className="flex-grow">
+        {/* 主標題區塊 */}
+        <section className="relative pt-32 pb-12 md:pt-48 md:py-28 bg-gradient-to-r from-blue-50 via-cyan-50 to-teal-50">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 md:mb-6">
                 我們的小組
-                <svg className="absolute -bottom-1 w-full" xmlns="http://www.w3.org/2000/svg" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
-                  <path d="M0,6 C30,2 70,2 100,6 L100,0 L0,0 Z" fill="#0d9488" />
-                </svg>
-              </span>
-            </h1>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-center text-lg mb-12">
-                小組是信仰生活的核心，在這裡我們彼此連結、成長與服事。
+              </h1>
+              <div className="w-20 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto rounded-full"></div>
+              <p className="mt-4 text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+                <span className="hidden md:block">小組是信仰生活的核心，在這裡我們彼此連結、成長與服事，</span>
+                <span className="hidden md:block">一起經歷神的愛與恩典。</span>
+                <span className="md:hidden">小組是信仰生活的核心，在這裡我們彼此連結、成長與服事，一起經歷神的愛與恩典。</span>
               </p>
-            </div>
-          </section>
-        </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 小組內容 */}
         <SmallGroup />
       </main>
+      
       <Footer />
-    </>
+    </div>
   )
 }
