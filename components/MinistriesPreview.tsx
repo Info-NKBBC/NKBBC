@@ -42,15 +42,13 @@ const cards: CardType[] = [
 
 export default function MinistriesPreview() {
   return (
-    <section className="relative pt-12 pb-16 md:pb-24 w-full flex justify-center">
+    <section className="relative pt-12 pb-16 md:pb-24 w-full flex justify-center bg-gradient-to-r from-pink-100 via-yellow-50 to-blue-50">
       {/* 簡化漸層背景 */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* 基礎漸層層 */}
+      <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 bg-gradient-to-br from-pink-500 to-orange-400 opacity-10"
           style={{
-            background: 'linear-gradient(135deg, #ff8a8a 0%, #ba68c8 50%, #64b5f6 100%)',
-            opacity: 0.9,
+            background: 'linear-gradient(135deg, rgba(255,138,138,0.1) 0%, rgba(186,104,200,0.1) 50%, rgba(100,181,246,0.1) 100%)',
           }}
         />
         
@@ -126,7 +124,7 @@ export default function MinistriesPreview() {
             className="w-full pb-6"
           >
             {cards.map((card) => (
-              <SwiperSlide key={`mobile-${card.title}`} className="h-auto w-[90%] max-w-[320px]">
+              <SwiperSlide key={`mobile-${card.title}`} className="h-[220px] w-[90%] max-w-[320px]">
                 <Card card={card} />
               </SwiperSlide>
             ))}
@@ -178,12 +176,12 @@ function Card({ card }: { card: CardType }) {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="p-3 md:p-4 flex-grow flex flex-col justify-center">
-        <h3 className="text-sm md:text-base font-bold mb-1">{card.title}</h3>
+      <div className="p-3 md:p-4 flex-grow flex flex-col justify-center h-[160px]">
+        <h3 className="text-sm md:text-base font-bold">{card.title}</h3>
         {card.time && (
-          <p className="text-gray-700 text-xs md:text-sm mb-1">{card.time}</p>
+          <p className="text-gray-700 text-xs md:text-sm mt-1">{card.time}</p>
         )}
-        <p className="text-gray-600 text-xs md:text-sm">
+        <p className="text-gray-600 text-xs md:text-sm mt-1 whitespace-nowrap">
           {card.href ? (
             <Link href={card.href} className="hover:underline">
               {card.location}

@@ -5,28 +5,28 @@ import { Autoplay, Pagination } from 'swiper/modules'
 const slides = [
   {
     img: '/images/hero1.jpg',
-    title: '南科福氣教會',
-    subtitle: '在這裡經歷信仰、盼望與愛的同在',
-    buttonText: '線上報名'
-  },
-  {
-    img: '/images/hero2.JPG',
-    title: '信仰之旅',
-    subtitle: '還有內父母成長、親密之旅、理財有道等課程',
-    buttonText: '了解我們'
-  },
-  {
-    img: '/images/hero3.jpg',
     title: '歡迎您來到南科福氣教會！',
     subtitle: '耶穌愛您，上帝祝福您！',
     buttonText: '加入我們'
+  },
+  {
+    img: '/images/hero2.JPG',
+    title: '',
+    subtitle: '',
+    buttonText: ''
+  },
+  {
+    img: '/images/hero3.jpg',
+    title: '南科福氣教會',
+    subtitle: '在這裡經歷信仰、盼望與愛的同在',
+    buttonText: '線上報名'
   }
 
 ]
 
 export default function HeroCarousel() {
   return (
-    <div className="w-screen h-[56.25vw] md:h-auto md:aspect-[23/10] aspect-auto relative overflow-hidden">
+    <div className="w-screen h-[56.25vw] md:h-auto md:aspect-[16/9] aspect-auto relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
         <Swiper className="max-h-full max-w-full w-full" 
                   modules={[Autoplay, Pagination]}
