@@ -31,9 +31,9 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="flex flex-col">
                     <span className="font-medium text-gray-800">聚會地址：</span>
-                    <span className="text-gray-600">南科育成中心 B101 國際會議廳</span>
+                    <span className="text-gray-600 whitespace-nowrap">南科育成中心 B101 國際會議廳</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
