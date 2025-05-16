@@ -19,7 +19,6 @@ export default function SeoHead() {
       <meta property="og:url" content={siteUrl} />
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={siteDescription} />
-      <meta property="og:image" content={siteUrl + siteImage} />
       <meta property="og:image" content={`${siteUrl}${siteImage}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
