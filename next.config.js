@@ -4,7 +4,7 @@ module.exports = {
   swcMinify: true,
   images: {
     unoptimized: true,
-    domains: ['nanke-blessing.vercel.app'],
+    domains: ['nanke-blessing.vercel.app', 'chauhuis-projects.vercel.app'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +17,12 @@ module.exports = {
         hostname: 'nanke-blessing.vercel.app',
         port: '',
         pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'chauhuis-projects.vercel.app',
+        port: '',
+        pathname: '/yd9r/images/**',
       },
     ],
   },
