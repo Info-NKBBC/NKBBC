@@ -5,6 +5,8 @@ export default function SeoHead() {
   const siteDescription = '歡迎來到南科福氣教會，與我們一起經歷信仰、盼望與愛的同在';
   const siteUrl = 'https://nanke-blessing.vercel.app'; // 請替換為您的實際網址
   const siteImage = `${siteUrl}/images/og-image.png`; // 請替換為您的預覽圖片路徑
+  const siteImageWidth = '1200';
+  const siteImageHeight = '630';
   const siteImageAlt = '南科福氣教會標誌';
 
   return (
@@ -21,14 +23,16 @@ export default function SeoHead() {
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={siteDescription} />
       <meta property="og:image" content={siteImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content={siteImageWidth} />
+      <meta property="og:image:height" content={siteImageHeight} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={siteImageAlt} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:locale" content="zh_TW" />
       <meta property="og:locale:alternate" content="en_US" />
-      <meta property="fb:app_id" content="" />
+      <meta property="og:article:published_time" content="2025-05-16" />
+      <meta property="og:article:modified_time" content="2025-05-16" />
+      <meta property="og:article:author" content="南科福氣教會" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +40,9 @@ export default function SeoHead() {
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={siteDescription} />
       <meta name="twitter:image" content={siteImage} />
-      <meta name="twitter:image" content={`${siteUrl}${siteImage}`} />
+      <meta name="twitter:image:alt" content={siteImageAlt} />
+      <meta name="twitter:site" content="@nanke_blessing" />
+      <meta name="twitter:creator" content="@nanke_blessing" />
     </Head>
   );
 }
