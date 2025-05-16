@@ -3,6 +3,7 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
+    domains: ['nanke-blessing.vercel.app'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,4 +13,4 @@ module.exports = {
       },
     ],
   },
-}; 
+};
