@@ -4,7 +4,7 @@ export default function SeoHead() {
   const siteTitle = '南科福氣教會';
   const siteDescription = '歡迎來到南科福氣教會，與我們一起經歷信仰、盼望與愛的同在';
   const siteUrl = 'https://nanke-blessing.vercel.app'; // 請替換為您的實際網址
-  const siteImage = `${siteUrl}/images/logo-horizontal.png`; // 請替換為您的預覽圖片路徑
+  const siteImage = `${siteUrl}/images/og-image.jpg`; // 請替換為您的預覽圖片路徑
   const siteImageAlt = '南科福氣教會標誌';
 
   return (
