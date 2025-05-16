@@ -4,7 +4,7 @@ export default function SeoHead() {
   const siteTitle = '南科福氣教會';
   const siteDescription = '歡迎來到南科福氣教會，與我們一起經歷信仰、盼望與愛的同在';
   const siteUrl = 'https://nanke-blessing.vercel.app'; // 請替換為您的實際網址
-  const siteImage = '/images/logo-horizontal.png'; // 請替換為您的預覽圖片路徑
+  const siteImage = `${siteUrl}/images/logo-horizontal.png`; // 請替換為您的預覽圖片路徑
 
   return (
     <Head>
@@ -22,6 +22,7 @@ export default function SeoHead() {
       <meta property="og:image" content={`${siteUrl}${siteImage}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:site_name" content={siteTitle} />
 
       {/* Twitter */}
