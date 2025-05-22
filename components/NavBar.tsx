@@ -1,11 +1,12 @@
 'use client';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function NavBar() {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -40,12 +41,26 @@ export default function NavBar() {
     { name: '各種成全聚會', href: '/about/gatherings' },
   ];
 
+  const videoLinks = [
+    { name: '教會簡介', href: '/video/church-intro' },
+    { name: '幸福小組花絮', href: '/video/happy-group' },
+  ];
+
   const links = [
     { name: '首頁', href: '/' },
     { name: '關於我們', href: '/about', isAbout: true },
-    { name: '影音平台', href: 'https://www.youtube.com/@南科福氣教會/featured' },
-    { name: '活動報名', href: '/donate' },
-    { name: '會友專區', href: '/contact' },
+    { name: '課程資訊', href: '/courses', isCourses: true },
+    { name: '影音平台', href: 'https://www.youtube.com/@南科福氣教會/featured', isVideo: true },
+    { name: '活動報名', href: '/event-registration' },
+    { name: '會友專區', href: '/member' },
+  ];
+
+  const coursesLinks = [
+    { name: '如何教養青少年', href: '/courses/teen-parenting' },
+    { name: '如何教養兒童', href: '/courses/child-parenting' },
+    { name: '親密之旅', href: '/courses/intimacy-journey' },
+    { name: '理財有道', href: '/courses/financial-wisdom' },
+    { name: '兒童品格班', href: '/courses/children-character' },
   ];
 
   useEffect(() => {
@@ -99,25 +114,91 @@ export default function NavBar() {
                       </svg>
                     </button>
                     <ul className={`absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg z-50 border border-gray-200 transition-all duration-200 ${aboutOpen ? 'block' : 'hidden'}`}>
-                      {aboutLinks.map(sub => (
-                        <li key={sub.name}>
-                          <a href={sub.href} className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-all duration-200">
-                            <span className="relative z-10">{sub.name}</span>
-                          </a>
+                      {aboutLinks.map(link => (
+                        <li key={link.name}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-gray-800 hover:bg-pink-500/10 transition"
+                            onClick={() => setAboutOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </li>
                 );
-              } else {
+              } else if (l.isCourses) {
                 return (
-                  <li key={l.name} className="inline-block">
-                    <a href={l.href} rel="noopener noreferrer">
-                      <span className="text-gray-800 text-base lg:text-lg hover:text-pink-500 transition cursor-pointer">{l.name}</span>
-                    </a>
+                  <li key={l.name} className="relative group inline-block">
+                    <button
+                      className="flex items-center gap-1 text-gray-800 hover:text-pink-500 transition cursor-pointer focus:outline-none text-base lg:text-lg"
+                      onClick={e => {
+                        e.preventDefault();
+                        setCoursesOpen(o => !o);
+                      }}
+                    >
+                      {l.name}
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <ul className={`absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg z-50 border border-gray-200 transition-all duration-200 ${coursesOpen ? 'block' : 'hidden'}`}>
+                      {coursesLinks.map(link => (
+                        <li key={link.name}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-gray-800 hover:bg-pink-500/10 transition"
+                            onClick={() => setCoursesOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                );
+              } else if (l.isVideo) {
+                return (
+                  <li key={l.name} className="relative group inline-block">
+                    <button
+                      className="flex items-center gap-1 text-gray-800 hover:text-pink-500 transition cursor-pointer focus:outline-none text-base lg:text-lg"
+                      onClick={e => {
+                        e.preventDefault();
+                        setVideoOpen(o => !o);
+                      }}
+                    >
+                      {l.name}
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <ul className={`absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg z-50 border border-gray-200 transition-all duration-200 ${videoOpen ? 'block' : 'hidden'}`}>
+                      {videoLinks.map(link => (
+                        <li key={link.name}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-gray-800 hover:bg-pink-500/10 transition"
+                            onClick={() => setVideoOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 );
               }
+              return (
+                <li key={l.name}>
+                  <Link
+                    href={l.href}
+                    className="text-gray-800 hover:text-pink-500 transition text-base lg:text-lg"
+                  >
+                    {l.name}
+                  </Link>
+                </li>
+              );
             })}
           </ul>
           <a 
@@ -148,7 +229,6 @@ export default function NavBar() {
               <X size={24} />
             </button>
           </div>
-
           <div className="flex-1 w-full px-4 py-4">
             <div className="space-y-3">
               {links.map((l, index) => (
@@ -173,11 +253,9 @@ export default function NavBar() {
                             <a 
                               key={sub.name}
                               href={sub.href} 
+                              rel={sub.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                              target={sub.href.startsWith('http') ? '_blank' : undefined}
                               className="block w-full px-3 py-2 text-lg font-medium text-gray-700 hover:bg-yellow-500/5 rounded-xl transition-all duration-300"
-                              onClick={() => {
-                                setMobileMenuOpen(prev => !prev);
-                                setAboutOpen(false);
-                              }}
                             >
                               {sub.name}
                             </a>
@@ -185,18 +263,78 @@ export default function NavBar() {
                         </div>
                       )}
                     </div>
+                  ) : l.name === '影音平台' ? (
+                    <div className="space-y-1">
+                      <button
+                        className="block w-full px-3 py-3 text-xl font-semibold text-gray-800 hover:bg-yellow-500/10 rounded-xl transition-all duration-300 flex justify-between items-center"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setVideoOpen(prev => !prev);
+                        }}
+                      >
+                        {l.name}
+                        <ChevronDown size={24} className={`ml-2 transition-transform duration-300 ${videoOpen ? 'rotate-180' : ''}`} 
+                                      style={{ color: '#FFD700' }}
+                        />
+                      </button>
+                      {videoOpen && (
+                        <div className="space-y-2 pl-5">
+                          {videoLinks.map(sub => (
+                            <Link 
+                              key={sub.name}
+                              href={sub.href}
+                              className="block w-full px-3 py-2 text-lg font-medium text-gray-700 hover:bg-yellow-500/5 rounded-xl transition-all duration-300"
+                              onClick={() => {
+                                setVideoOpen(false);
+                              }}
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : l.name === '課程資訊' ? (
+                    <div className="space-y-1">
+                      <button
+                        className="block w-full px-3 py-3 text-xl font-semibold text-gray-800 hover:bg-yellow-500/10 rounded-xl transition-all duration-300 flex justify-between items-center"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCoursesOpen(prev => !prev);
+                        }}
+                      >
+                        {l.name}
+                        <ChevronDown size={24} className={`ml-2 transition-transform duration-300 ${coursesOpen ? 'rotate-180' : ''}`} 
+                                      style={{ color: '#FFD700' }}
+                        />
+                      </button>
+                      {coursesOpen && (
+                        <div className="space-y-2 pl-5">
+                          {coursesLinks.map(sub => (
+                            <Link 
+                              key={sub.name}
+                              href={sub.href}
+                              className="block w-full px-3 py-2 text-lg font-medium text-gray-700 hover:bg-yellow-500/5 rounded-xl transition-all duration-300"
+                              onClick={() => {
+                                setCoursesOpen(false);
+                              }}
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ) : (
-                    <a 
-                      href={l.href} 
-                      rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      target={l.href.startsWith('http') ? '_blank' : undefined}
+                    <Link 
+                      href={l.href}
                       className="block w-full px-3 py-3 text-xl font-semibold text-gray-800 hover:bg-yellow-500/10 rounded-xl transition-all duration-300"
                       onClick={() => {
                         setMobileMenuOpen(prev => !prev);
                       }}
                     >
                       {l.name}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}

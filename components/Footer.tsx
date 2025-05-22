@@ -2,11 +2,15 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone, Clock, Facebook, Youtube, Instagram, MessageSquare } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  className?: string;
+}
+
+export default function Footer({ className = '' }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-gray-200 w-full">
+    <footer className={`bg-white border-t border-gray-200 w-full ${className}`}>
       {/* 手機版簡化設計 */}
       <div className="lg:hidden w-full bg-white/90 backdrop-blur-sm py-6 sticky bottom-0 z-10">
         <div className="container mx-auto px-4">
@@ -61,9 +65,20 @@ export default function Footer() {
       {/* 桌面版設計保持不變 */}
       <div className="hidden lg:block w-full bg-gradient-to-br from-rose-50 via-amber-50 to-cyan-50 pt-12 pb-8">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-5 mb-8">
+            <style jsx>{`
+              .footer-column {
+                padding: 0 1.5rem;
+              }
+              .footer-column:first-child {
+                padding-left: 0;
+              }
+              .footer-column:last-child {
+                padding-right: 0;
+              }
+            `}</style>
             {/* 教會資訊 */}
-            <div className="space-y-4">
+            <div className="space-y-4 footer-column">
               <Link href="/" className="inline-block">
                 <img 
                   src="/images/logo-horizontal.png" 
@@ -89,7 +104,7 @@ export default function Footer() {
             </div>
 
             {/* 快速連結 */}
-            <div>
+            <div className="footer-column" style={{ paddingLeft: '2rem' }}>
               <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
                 快速連結
                 <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-rose-400 to-amber-400"></span>
@@ -106,7 +121,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="/about"
+                    href="/video/church-intro"
                     className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
@@ -124,16 +139,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="https://www.youtube.com/@南科福氣教會/featured"
-                    className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
-                    影音平台
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="/events"
+                    href="/event-registration"
                     className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
@@ -142,18 +148,18 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="/contact"
+                    href="/member"
                     className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
-                    聯絡我們
+                    會友專區
                   </Link>
                 </li>
               </ul>
             </div>
 
             {/* 關於我們 */}
-            <div>
+            <div className="footer-column">
               <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
                 關於我們
                 <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-amber-400 to-cyan-400"></span>
@@ -207,13 +213,41 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* 影音平台 */}
+            <div className="footer-column">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
+                影音平台
+                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-amber-400 to-cyan-400"></span>
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    href="/video/church-intro"
+                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span>
+                    教會簡介
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/video/happy-group"
+                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span>
+                    幸福小組花絮
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
             {/* 聯絡資訊 */}
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
                 聯絡我們
                 <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-cyan-400 to-rose-400"></span>
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 <li className="flex items-start">
                   <MapPin className="flex-shrink-0 h-5 w-5 text-rose-500 mt-0.5" />
                   <span className="ml-3 text-gray-600 text-sm">

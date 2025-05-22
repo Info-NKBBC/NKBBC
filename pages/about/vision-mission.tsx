@@ -1,9 +1,20 @@
+'use client';
+import React, { useState, useEffect } from 'react';
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 
 export default function VisionMission() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
