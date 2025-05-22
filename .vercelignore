@@ -1,0 +1,9 @@
+.git
+.gitignore
+node_modules
+.next
+.sanity
+*.local
+*.bak
+app.bak
+studio
