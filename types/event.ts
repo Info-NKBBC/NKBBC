@@ -15,4 +15,7 @@ export interface Event {
   };
   registrationUrl?: string;
   category?: 'worship' | 'meeting' | 'event' | 'other';
+  displayDate?: string;
+  _rawDateObj?: Date;
+  _rawEndDateObj?: Date;
 }
