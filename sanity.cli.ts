@@ -7,5 +7,9 @@ export default defineCliConfig({
   },
   server: {
     port: 3333
-  }
+  },
+  vite: (config) => ({
+    ...config,
+    base: '/studio'
+  })
 });

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build --no-minify",
+    "vercel-build": "node vercel-build.js"
   },
   "dependencies": {
     "@sanity/vision": "^3.0.0",

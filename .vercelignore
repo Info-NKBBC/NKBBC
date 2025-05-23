@@ -6,4 +6,5 @@ node_modules
 *.local
 *.bak
 app.bak
-studio
+studio/node_modules
+!studio/dist
