@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import NavBar from '@/components/NavBar';
 import HeroCarousel from '@/components/HeroCarousel';
 import { AboutPreview } from '@/components/AboutPreview';
@@ -9,6 +10,18 @@ import SocialFloat from '@/components/SocialFloat';
 export default function Home() {
   return (
     <>
+      {/* --- OG 預覽圖 & SEO meta --- */}
+      <Head>
+        <title>南科福氣教會 Nanke Blessed & Blessing Church</title>
+        <meta property="og:title" content="南科福氣教會 Nanke Blessed & Blessing Church" />
+        <meta property="og:description" content="歡迎來到南科福氣教會，我們在台南為主發光！" />
+        <meta property="og:image" content="https://nanke-blessing.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nanke-blessing.vercel.app/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://nanke-blessing.vercel.app/og-image.jpg" />
+        <meta name="description" content="南科福氣教會 Nanke Blessed & Blessing Church，台南基督教會。歡迎您加入！" />
+      </Head>
       <div className="relative">
         <NavBar />
 
@@ -119,7 +132,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
         </main>
         <Footer />
       </div>
