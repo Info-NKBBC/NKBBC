@@ -16,20 +16,7 @@ const EventRegistrationForm = dynamic(
   { ssr: false }
 );
 
-interface Event {
-  _id: string;
-  title: string;
-  date: string;
-  endDate?: string;
-  location: string;
-  description: string;
-  image: any;
-  registrationUrl: string;
-  category: string;
-  content?: any;
-  _rawDateObj?: Date;
-  _rawEndDateObj?: Date;
-}
+type Event = EventType;
 
 export default function EventRegistration() {
   const [events, setEvents] = useState<Event[]>([]);
