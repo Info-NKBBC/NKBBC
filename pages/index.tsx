@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <div className="relative">
         <NavBar />
-        
+
         <main className="relative bg-gray-100">
           <div className="pt-16 md:pt-28">
             <div className="bg-gradient-to-r from-pink-500 via-yellow-400 to-orange-500">
@@ -42,73 +42,78 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 生命見證區塊 */}
-          <section className="relative py-16 bg-white">
+          {/* 生命見證區塊（主題漸層背景，卡片柔色、陰影、細邊框，內容內縮） */}
+          <section
+            className="relative py-8 md:py-16"
+            style={{
+              background: "linear-gradient(120deg, #f7e9fa 0%, #e3f7fa 100%)"
+            }}
+          >
             <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              <div className="text-center mb-6 md:mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 md:mb-4">
                   生命見證
                 </h2>
                 <div className="w-20 h-1.5 mx-auto bg-gradient-to-r from-pink-500 to-orange-400 rounded-full"></div>
-                <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                <p className="mt-2 md:mt-4 text-gray-600 max-w-2xl mx-auto">
                   聽聽弟兄姊妹們分享他們的生命故事
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* 見證1 */}
-                <div className="relative group bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-orange-400 opacity-10 group-hover:opacity-20 transition-opacity"></div>
-                  <div className="relative p-6">
-                    <div className="w-full">
-                      <div className="youtube-container relative w-[80%] mx-auto">
-                        <div className="aspect-video">
-                          <iframe 
-                            src="https://www.youtube.com/embed/KJ_XkJoTW0A" 
-                            title="YouTube video player" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen
-                            className="rounded-lg w-full h-full"
-                          ></iframe>
-                        </div>
-                      </div>
+                <div className="relative group rounded-2xl shadow-lg overflow-hidden bg-pink-50 border border-pink-100 px-6 py-8 w-full">
+                  <div className="mb-4 flex items-center space-x-2 w-[92%] mx-auto">
+                    <span className="inline-block bg-pink-200 text-pink-700 text-xs font-bold px-2 py-1 rounded">
+                      夫妻
+                    </span>
+                    <h3 className="text-lg md:text-xl font-bold text-pink-700 tracking-tight">
+                      榮杰與菊珍
+                    </h3>
+                  </div>
+                  <div className="youtube-container mb-6 rounded-xl overflow-hidden shadow w-[92%] mx-auto">
+                    <div className="aspect-video">
+                      <iframe
+                        src="https://www.youtube.com/embed/KJ_XkJoTW0A"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="rounded-lg w-full h-full"
+                      ></iframe>
                     </div>
-                    <div className="w-[80%] mx-auto mt-6">
-                      <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                        生命見證1
-                      </h3>
-                      <p className="text-gray-600">
-                        分享信仰旅程與神的帶領
-                      </p>
-                    </div>
+                  </div>
+                  <div className="w-[92%] mx-auto">
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      分享了夫妻間過往的摩擦、溝通困難，以及在信仰過程中如何學會理解、包容與彼此支持。
+                    </p>
                   </div>
                 </div>
 
                 {/* 見證2 */}
-                <div className="relative group bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-teal-400 opacity-10 group-hover:opacity-20 transition-opacity"></div>
-                  <div className="relative p-6">
-                    <div className="w-full">
-                      <div className="youtube-container relative w-[80%] mx-auto">
-                        <div className="aspect-video">
-                          <iframe 
-                            src="https://www.youtube.com/embed/uMW2kAhZN9k" 
-                            title="YouTube video player" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen
-                            className="rounded-lg w-full h-full"
-                          ></iframe>
-                        </div>
-                      </div>
+                <div className="relative group rounded-2xl shadow-lg overflow-hidden bg-blue-50 border border-blue-100 px-6 py-8 w-full">
+                  <div className="mb-4 flex items-center space-x-2 w-[92%] mx-auto">
+                    <span className="inline-block bg-blue-200 text-blue-800 text-xs font-bold px-2 py-1 rounded">
+                      親子
+                    </span>
+                    <h3 className="text-lg md:text-xl font-bold text-blue-700 tracking-tight">
+                      淑貞與菀芮
+                    </h3>
+                  </div>
+                  <div className="youtube-container mb-6 rounded-xl overflow-hidden shadow w-[92%] mx-auto">
+                    <div className="aspect-video">
+                      <iframe
+                        src="https://www.youtube.com/embed/uMW2kAhZN9k"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="rounded-lg w-full h-full"
+                      ></iframe>
                     </div>
-                    <div className="w-[80%] mx-auto mt-6">
-                      <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                        生命見證2
-                      </h3>
-                      <p className="text-gray-600">
-                        分享信仰成長與見證
-                      </p>
-                    </div>
+                  </div>
+                  <div className="w-[92%] mx-auto">
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      分享在教養兒童過程中所經歷的挑戰與掙扎，並透過信仰的力量學會彼此理解與支持。
+                    </p>
                   </div>
                 </div>
               </div>
@@ -120,4 +125,4 @@ export default function Home() {
       </div>
     </>
   );
-} 
+}
