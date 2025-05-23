@@ -27,4 +27,13 @@ module.exports = {
     ],
   },
   trailingSlash: true,
+  // 新增 rewrites 讓 /studio 可以正確進入 Sanity Studio
+  async rewrites() {
+    return [
+      {
+        source: '/studio/:path*',
+        destination: '/studio/:path*',
+      },
+    ];
+  },
 };
