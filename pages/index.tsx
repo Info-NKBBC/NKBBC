@@ -34,15 +34,15 @@ export default function Home() {
 
           <MinistriesPreview />
 
-          {/* 行事曆區塊 */}
-          <section className="relative py-10 overflow-hidden w-full" style={{background: 'linear-gradient(120deg, #f7d6f7 0%, #ffe4b0 40%, #aee8fd 100%)'}}>
+          {/* 行事曆區塊 - 已加入每週第一天為週日設定 */}
+          <section className="relative py-10 overflow-hidden w-full" style={{ background: 'linear-gradient(120deg, #f7d6f7 0%, #ffe4b0 40%, #aee8fd 100%)' }}>
             <div className="w-[80%] mx-auto">
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-800">教會行事曆</h2>
               </div>
               <div className="w-full overflow-x-auto rounded-lg shadow">
                 <iframe
-                  src="https://calendar.google.com/calendar/embed?src=shchurch5%40gmail.com&ctz=Asia%2FTaipei"
+                  src="https://calendar.google.com/calendar/embed?src=shchurch5%40gmail.com&src=zh.taiwan%23holiday%40group.v.calendar.google.com&ctz=Asia%2FTaipei&wkst=1"
                   style={{ border: 0 }}
                   width="100%"
                   height="600"
