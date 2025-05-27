@@ -7,6 +7,7 @@ export default function NavBar() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
+  const [memberOpen, setMemberOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -46,13 +47,17 @@ export default function NavBar() {
     { name: '幸福小組花絮', href: '/video/happy-group' },
   ];
 
+  const memberLinks = [
+    { name: '愛宴系統', href: '/member/meal' },
+  ];
+
   const links = [
     { name: '首頁', href: '/' },
     { name: '關於我們', href: '/about', isAbout: true },
     { name: '課程資訊', href: '/courses', isCourses: true },
     { name: '影音平台', href: 'https://www.youtube.com/@南科福氣教會/featured', isVideo: true },
     { name: '活動報名', href: '/event-registration' },
-    { name: '會友專區', href: '/member' },
+    { name: '會友專區', href: '/member', isMember: true },
   ];
 
   const coursesLinks = [
@@ -150,6 +155,36 @@ export default function NavBar() {
                             href={link.href}
                             className="block px-4 py-2 text-gray-800 hover:bg-pink-500/10 transition"
                             onClick={() => setCoursesOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                );
+              } else if (l.isMember) {
+                return (
+                  <li key={l.name} className="relative group inline-block">
+                    <button
+                      className="flex items-center gap-1 text-gray-800 hover:text-pink-500 transition cursor-pointer focus:outline-none text-base lg:text-lg"
+                      onClick={e => {
+                        e.preventDefault();
+                        setMemberOpen(o => !o);
+                      }}
+                    >
+                      {l.name}
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <ul className={`absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg z-50 border border-gray-200 transition-all duration-200 ${memberOpen ? 'block' : 'hidden'}`}>
+                      {memberLinks.map(link => (
+                        <li key={link.name}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-gray-800 hover:bg-pink-500/10 transition"
+                            onClick={() => setMemberOpen(false)}
                           >
                             {link.name}
                           </Link>
@@ -286,6 +321,37 @@ export default function NavBar() {
                               className="block w-full px-3 py-2 text-lg font-medium text-gray-700 hover:bg-yellow-500/5 rounded-xl transition-all duration-300"
                               onClick={() => {
                                 setVideoOpen(false);
+                              }}
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : l.name === '會友專區' ? (
+                    <div className="space-y-1">
+                      <button
+                        className="block w-full px-3 py-3 text-xl font-semibold text-gray-800 hover:bg-yellow-500/10 rounded-xl transition-all duration-300 flex justify-between items-center"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMemberOpen(prev => !prev);
+                        }}
+                      >
+                        {l.name}
+                        <ChevronDown size={24} className={`ml-2 transition-transform duration-300 ${memberOpen ? 'rotate-180' : ''}`} 
+                                      style={{ color: '#FFD700' }}
+                        />
+                      </button>
+                      {memberOpen && (
+                        <div className="space-y-2 pl-5">
+                          {memberLinks.map(sub => (
+                            <Link 
+                              key={sub.name}
+                              href={sub.href}
+                              className="block w-full px-3 py-2 text-lg font-medium text-gray-700 hover:bg-yellow-500/5 rounded-xl transition-all duration-300"
+                              onClick={() => {
+                                setMemberOpen(false);
                               }}
                             >
                               {sub.name}

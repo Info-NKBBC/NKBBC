@@ -18,7 +18,7 @@ const cards: CardType[] = [
     title: '主日聚會',
     time: '每週日 10:00~12:00',
     location: '南科育成中心 國際會議廳',
-    img: '/images/hero1.jpg'
+    img: '/images/worship.jpg'
   },
   {
     title: '兒童主日學',
