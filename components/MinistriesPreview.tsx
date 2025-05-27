@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Mousewheel } from 'swiper/modules';
+import { Clock, MapPin } from 'lucide-react';
 import 'swiper/css/pagination';
 
 type CardType = {
@@ -29,7 +30,7 @@ const cards: CardType[] = [
   {
     title: '兒童品格班',
     time: '每週三 19:00~20:30',
-    location: '台南市善化區小新營56號',
+    location: '善化區小新營56-65號',
     img: '/images/community.jpg'
   },
   {
@@ -114,21 +115,15 @@ export default function MinistriesPreview() {
             <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent"></span>
           </h2>
         </div>
-        {/* 手機版：橫向滑動輪播 */}
-        <div className="md:hidden w-full">
-          <Swiper
-            slidesPerView={1.3}
-            spaceBetween={10}
-            mousewheel={true}
-            modules={[Mousewheel]}
-            className="w-full pb-6"
-          >
+        {/* 手機版：垂直滾動單列佈局 */}
+        <div className="md:hidden w-full px-4">
+          <div className="space-y-4">
             {cards.map((card) => (
-              <SwiperSlide key={`mobile-${card.title}`} className="h-[220px] w-[90%] max-w-[320px]">
+              <div key={`mobile-${card.title}`} className="h-36">
                 <Card card={card} />
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
         
         {/* 桌面版：網格佈局 */}
@@ -166,30 +161,38 @@ export default function MinistriesPreview() {
 }
 
 // 抽離卡片組件
-function Card({ card }: { card: CardType }) {
+function Card({ card, isWide = false }: { card: CardType; isWide?: boolean }) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-row">
-      <div className="w-2/5 flex-shrink-0">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex border border-gray-100">
+      <div className="w-1/3 flex-shrink-0">
         <img 
           src={card.img} 
           alt={card.title}
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="p-3 md:p-4 flex-grow flex flex-col justify-center h-[160px]">
-        <h3 className="text-sm md:text-base font-bold">{card.title}</h3>
-        {card.time && (
-          <p className="text-gray-700 text-xs md:text-sm mt-1">{card.time}</p>
-        )}
-        <p className="text-gray-600 text-xs md:text-sm mt-1 whitespace-nowrap">
-          {card.href ? (
-            <Link href={card.href} className="hover:underline">
-              {card.location}
-            </Link>
-          ) : (
-            card.location
+      <div className="p-3 flex-grow flex flex-col justify-center">
+        <h3 className="font-bold text-gray-800 text-base">{card.title}</h3>
+        <div className="space-y-1 mt-1">
+          {card.time && (
+            <div className="flex items-center text-gray-600 text-xs">
+              <Clock className="w-3 h-3 mr-1 text-pink-500 flex-shrink-0" />
+              <span>{card.time}</span>
+            </div>
           )}
-        </p>
+          <div className="flex items-start text-gray-600 text-xs">
+            <MapPin className="w-3 h-3 mr-1 text-pink-500 mt-0.5 flex-shrink-0" />
+            <span>
+              {card.href ? (
+                <Link href={card.href} className="hover:underline">
+                  {card.location}
+                </Link>
+              ) : (
+                card.location
+              )}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
