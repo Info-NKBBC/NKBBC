@@ -1,10 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Mousewheel } from 'swiper/modules';
 import { Clock, MapPin } from 'lucide-react';
-import 'swiper/css/pagination';
 
 type CardType = {
   title: string;
@@ -44,7 +41,8 @@ const cards: CardType[] = [
 export default function MinistriesPreview() {
   return (
     <section className="relative pt-12 pb-16 md:pb-24 w-full flex justify-center bg-gradient-to-r from-pink-100 via-yellow-50 to-blue-50">
-      {/* 簡化漸層背景 */}
+      {/* 淡淡圓形柔光背景 */}
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-pink-200 opacity-25 rounded-full blur-2xl z-0 pointer-events-none" />
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-gradient-to-br from-pink-500 to-orange-400 opacity-10"
@@ -52,8 +50,6 @@ export default function MinistriesPreview() {
             background: 'linear-gradient(135deg, rgba(255,138,138,0.1) 0%, rgba(186,104,200,0.1) 50%, rgba(100,181,246,0.1) 100%)',
           }}
         />
-        
-        {/* 紋理層 */}
         <div 
           className="absolute inset-0 opacity-70"
           style={{
@@ -61,8 +57,6 @@ export default function MinistriesPreview() {
             backgroundSize: '20px 20px',
           }}
         />
-        
-        {/* 柔光效果 */}
         <div 
           className="absolute inset-0"
           style={{
@@ -72,43 +66,36 @@ export default function MinistriesPreview() {
         />
       </div>
       <style jsx global>{`
-        /* 專業字體 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-        
         .font-title {
           font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-weight: 700;
           letter-spacing: -0.025em;
         }
-        
-        /* 漸層動畫效果 */
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        /* 文字陰影效果 */
-        .text-outline {
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        /* 添加自定義顏色 */
-        .bg-lavender-100 { background-color: #f5f0ff; }
-        .bg-pink-50 { background-color: #fff0f5; }
-        .bg-sky-100 { background-color: #f0f9ff; }
-
-
       `}</style>
       <div className="relative z-10 w-[95%] md:w-[80%]">
         {/* 標題區塊 */}
         <div className="text-center mb-4 md:mb-16">
-          <h2 className="relative inline-block text-2xl md:text-5xl lg:text-6xl font-title text-white/95 mb-4 md:mb-6">
+          <h2 className="relative inline-block text-2xl md:text-5xl lg:text-6xl font-title mb-4 md:mb-6">
             <div className="relative z-10 space-y-0.5 md:space-y-2">
-              <div className="text-base md:text-3xl lg:text-4xl font-semibold tracking-wider text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              <div
+                className="text-base md:text-3xl lg:text-4xl font-semibold tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
+                style={{
+                  background: 'linear-gradient(90deg,#f472b6 20%, #fde68a 55%, #60a5fa 90%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
                 WELCOME
               </div>
-              <div className="text-2xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+              <div
+                className="text-2xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+                style={{
+                  background: 'linear-gradient(90deg,#f472b6 15%, #fde68a 50%, #60a5fa 90%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
                 HOME
               </div>
             </div>
@@ -125,11 +112,16 @@ export default function MinistriesPreview() {
             ))}
           </div>
         </div>
-        
         {/* 桌面版：網格佈局 */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
           {cards.map((card) => (
-            <div key={`desktop-${card.title}`} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+            <div
+              key={`desktop-${card.title}`}
+              className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-[0_10px_32px_4px_rgba(244,114,182,0.12)] hover:-translate-y-2 transition-all duration-300 h-full flex flex-col"
+              style={{
+                boxShadow: '0 4px 24px 0 rgba(100,181,246,0.10),0 1.5px 7px 0 rgba(245,214,205,0.08)'
+              }}
+            >
               <div className="w-full h-40">
                 <img 
                   src={card.img} 
@@ -138,13 +130,17 @@ export default function MinistriesPreview() {
                 />
               </div>
               <div className="p-4 md:p-6 flex-grow">
-                <h3 className="text-lg font-bold mb-2">{card.title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-pink-700">{card.title}</h3>
                 {card.time && (
-                  <p className="text-gray-700 text-sm mb-1">{card.time}</p>
+                  <p className="text-gray-700 text-sm mb-1 flex items-center">
+                    <Clock className="w-4 h-4 mr-1 text-pink-400" />
+                    {card.time}
+                  </p>
                 )}
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-sm flex items-center">
+                  <MapPin className="w-4 h-4 mr-1 text-blue-400" />
                   {card.href ? (
-                    <Link href={card.href} className="hover:underline">
+                    <Link href={card.href} className="hover:underline text-blue-700">
                       {card.location}
                     </Link>
                   ) : (
@@ -163,7 +159,7 @@ export default function MinistriesPreview() {
 // 抽離卡片組件
 function Card({ card, isWide = false }: { card: CardType; isWide?: boolean }) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex border border-gray-100">
+    <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-[0_10px_32px_4px_rgba(244,114,182,0.12)] hover:-translate-y-2 transition-all duration-300 h-full flex">
       <div className="w-1/3 flex-shrink-0">
         <img 
           src={card.img} 
@@ -172,19 +168,19 @@ function Card({ card, isWide = false }: { card: CardType; isWide?: boolean }) {
         />
       </div>
       <div className="p-3 flex-grow flex flex-col justify-center">
-        <h3 className="font-bold text-gray-800 text-base">{card.title}</h3>
+        <h3 className="font-bold text-pink-700 text-base">{card.title}</h3>
         <div className="space-y-1 mt-1">
           {card.time && (
             <div className="flex items-center text-gray-600 text-xs">
-              <Clock className="w-3 h-3 mr-1 text-pink-500 flex-shrink-0" />
+              <Clock className="w-3 h-3 mr-1 text-pink-400 flex-shrink-0" />
               <span>{card.time}</span>
             </div>
           )}
           <div className="flex items-start text-gray-600 text-xs">
-            <MapPin className="w-3 h-3 mr-1 text-pink-500 mt-0.5 flex-shrink-0" />
+            <MapPin className="w-3 h-3 mr-1 text-blue-400 mt-0.5 flex-shrink-0" />
             <span>
               {card.href ? (
-                <Link href={card.href} className="hover:underline">
+                <Link href={card.href} className="hover:underline text-blue-700">
                   {card.location}
                 </Link>
               ) : (

@@ -148,11 +148,11 @@ export default function Footer({ className = '' }: FooterProps) {
                 </li>
                 <li>
                   <Link 
-                    href="/member"
+                    href="/member/meal"
                     className="text-gray-600 hover:text-rose-600 transition-colors text-sm flex items-center"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span>
-                    會友專區
+                    愛宴系統
                   </Link>
                 </li>
               </ul>
@@ -266,8 +266,8 @@ export default function Footer({ className = '' }: FooterProps) {
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-5 w-5 text-cyan-500" />
-                  <a href="mailto:contact@example.com" className="ml-3 text-gray-600 hover:text-cyan-600 transition-colors text-sm">
-                    contact@example.com
+                  <a href="mailto:Info.NKBBC@gmail.com" className="ml-3 text-gray-600 hover:text-cyan-600 transition-colors text-sm">
+                    Info.NKBBC@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start">
