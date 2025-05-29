@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, Phone, Clock, Facebook, Youtube, Instagram, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Phone, Clock } from 'lucide-react';
+import Image from 'next/image';
 
 interface FooterProps {
   className?: string;
@@ -21,13 +22,13 @@ export default function Footer({ className = '' }: FooterProps) {
   }
 
   return (
-    <footer className={`bg-white border-t border-gray-200 w-full ${className}`}>
-      {/* 手機版頁腳 */}
-      <div className="lg:hidden w-full bg-gradient-to-br from-rose-50 via-amber-50 to-cyan-50 py-6 sticky bottom-0 z-10">
+    <footer className={`bg-gradient-to-br from-rose-50 via-amber-50 to-cyan-50 text-gray-700 ${className}`}>
+      {/* 手機版頁尾 */}
+      <div className="lg:hidden pt-8 pb-12 px-4 sticky bottom-0 z-10">
         <div className="container mx-auto px-4">
           <div className="space-y-8">
             {/* 聯絡我們區塊 */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm">
+            <div className="rounded-xl p-6">
               <h3 className="text-lg font-semibold text-gray-800 mb-4 relative pb-2">
                 聯絡我們
                 <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-cyan-400 to-rose-400"></span>
@@ -81,22 +82,22 @@ export default function Footer({ className = '' }: FooterProps) {
               <div className="mt-6 pt-4 border-t border-gray-100">
                 <p className="text-sm font-medium text-gray-700 mb-3">關注我們</p>
                 <div className="flex space-x-4">
-                  <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
-                    <Facebook size={20} />
+                  <a href="#" className="transition-opacity hover:opacity-80">
+                    <Image src="/images/social/facebook.png" alt="Facebook" width={24} height={24} className="w-6 h-6" />
                   </a>
-                  <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
-                    <Instagram size={20} />
+                  <a href="#" className="transition-opacity hover:opacity-80">
+                    <Image src="/images/social/instagram.png" alt="Instagram" width={24} height={24} className="w-6 h-6" />
                   </a>
-                  <a href="https://www.youtube.com/@%E5%8D%97%E7%A7%91%E7%A6%8F%E6%B0%A3%E6%95%99%E6%9C%83/featured" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:text-rose-600 transition-colors p-2 rounded-full border border-rose-100 hover:border-rose-200">
-                    <Youtube size={20} />
+                  <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
+                    <Image src="/images/social/youtube.png" alt="YouTube" width={24} height={24} className="w-6 h-6" />
                   </a>
                 </div>
               </div>
             </div>
             
             {/* 版權資訊 */}
-            <div className="pt-4 text-center">
-              <div className="flex justify-center space-x-4 mb-2">
+            <div className="text-center">
+              <div className="flex justify-center space-x-4 mb-1">
                 <Link href="/privacy" className="text-xs text-gray-500 hover:text-rose-500 transition-colors">
                   隱私權政策
                 </Link>
@@ -106,14 +107,14 @@ export default function Footer({ className = '' }: FooterProps) {
                 </Link>
               </div>
               <p className="text-xs text-gray-500">
-                © {currentYear} 南科福氣教會 版權所有
+                &copy; {currentYear} 南科福氣教會 版權所有
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 桌面版頁腳 */}
+      {/* 桌面版頁尾 */}
       <div className="hidden lg:block w-full bg-gradient-to-br from-rose-50 via-amber-50 to-cyan-50 pt-12 pb-8">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-5 mb-8">
@@ -142,14 +143,14 @@ export default function Footer({ className = '' }: FooterProps) {
                 透過真理的教導和生命的見證，將福音帶給每一個人。
               </p>
               <div className="flex space-x-4 pt-2">
-                <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors">
-                  <Facebook size={20} />
+                <a href="#" className="transition-opacity hover:opacity-80">
+                  <Image src="/images/social/facebook.png" alt="Facebook" width={24} height={24} className="w-6 h-6" />
                 </a>
-                <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:text-rose-600 transition-colors">
-                  <Youtube size={20} />
+                <a href="#" className="transition-opacity hover:opacity-80">
+                  <Image src="/images/social/instagram.png" alt="Instagram" width={24} height={24} className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-rose-500 hover:text-rose-600 transition-colors">
-                  <Instagram size={20} />
+                <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
+                  <Image src="/images/social/youtube.png" alt="YouTube" width={24} height={24} className="w-6 h-6" />
                 </a>
               </div>
             </div>
