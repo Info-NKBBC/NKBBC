@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import NavBar from '@/components/NavBar'
-import Footer from '@/components/Footer'
 
 export default function HappyGroup() {
   const fadeInUp = {
@@ -80,8 +79,6 @@ export default function HappyGroup() {
 
         </section>
       </main>
-      
-      <Footer />
     </div>
   )
 }

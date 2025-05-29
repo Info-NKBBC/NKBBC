@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import NavBar from '@/components/NavBar'
-import Footer from '@/components/Footer'
 
 export default function ChurchIntro() {
   const fadeInUp = {
@@ -76,8 +75,6 @@ export default function ChurchIntro() {
           </motion.div>
         </section>
       </main>
-      
-      <Footer />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import CoreValueCard from '@/components/CoreValueCard';
@@ -21,7 +20,7 @@ export default function CoreValuesPage() {
     },
     {
       id: 2,
-      title: "是醫治我們身心靈的醫院",
+      title: "教會是醫治我們身心靈的醫院",
       content: [
         "一對一服事",
         "家人的愛、接納、肯定、扶持",
@@ -48,7 +47,7 @@ export default function CoreValuesPage() {
     },
     {
       id: 4,
-      title: "訓練我們成為上帝的同工",
+      title: "教會成全我們成為上帝的同工",
       content: [
         "成為基督的精兵，作得勝者、一同建造基督的身體",
       ],
@@ -112,7 +111,6 @@ export default function CoreValuesPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

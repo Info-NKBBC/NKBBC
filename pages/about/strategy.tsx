@@ -1,6 +1,5 @@
 import NavBar from '@/components/NavBar'
 import Strategy from '@/components/Strategy'
-import Footer from '@/components/Footer'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 
@@ -49,8 +48,6 @@ export default function StrategyPage() {
         {/* 策略內容 */}
         <Strategy />
       </main>
-      
-      <Footer />
     </div>
   )
 }

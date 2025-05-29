@@ -1,7 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import NavBar from '@/components/NavBar'
-import Footer from '@/components/Footer'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 
@@ -33,15 +31,12 @@ export default function VisionMission() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col pb-16 md:pb-0">
+    <>
       <Head>
-        <title>異象與使命 | 南科福氣教會</title>
-        <meta name="description" content="了解南科福氣教會的異象與使命，我們如何服務社區並傳播福音。" />
+        <title>異象與使命 - 南科福氣教會</title>
+        <meta name="description" content="了解南科福氣教會的異象與使命，認識我們的核心價值與目標" />
       </Head>
-      
-      <NavBar />
-      
-      <main className="flex-grow">
+      <>
         {/* 主標題區塊 */}
         <section className="relative pt-32 pb-12 md:pt-48 md:py-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-blue-50">
           <div className="container mx-auto px-4">
@@ -91,18 +86,25 @@ export default function VisionMission() {
                   
                   <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                     <div className="p-3 md:p-4 bg-gray-50 rounded-lg border-l-4 border-pink-400">
-                      <p className="text-gray-700">
-                        <span className="font-bold text-pink-600">『基督』</span> － 基督是一切，<br className="md:hidden" />又在一切之內
-                        <div className="text-center">
-                          <span className="text-sm text-gray-500 mt-1">(Christ is all & in all)</span>
+                      <div className="text-gray-700">
+                        <div className="space-y-1 pl-4">
+                          <div className="font-bold text-pink-600 -ml-4">『基督』－</div>
+                          <div className="ml-4">
+                            基督是一切，又在一切之內
+                            <span className="hidden md:inline text-sm text-gray-500 ml-2">(Christ is all & in all)</span>
+                          </div>
+                          <div className="md:hidden text-sm text-gray-500 ml-4">
+                            (Christ is all & in all)
+                          </div>
                         </div>
-                      </p>
+                      </div>
                     </div>
                     
                     <div className="p-3 md:p-4 bg-gray-50 rounded-lg border-l-4 border-orange-400">
-                      <p className="text-gray-700">
-                        <span className="font-bold text-orange-600">『教會』</span> － 是基督的身體，是充滿神並彰顯神榮耀的器皿
-                      </p>
+                      <div className="space-y-1 pl-4">
+                        <div className="font-bold text-orange-600 -ml-4">『教會』－</div>
+                        <div className="ml-4">是基督的身體，是充滿神並彰顯神榮耀的器皿</div>
+                      </div>
                     </div>
                   </div>
                   
@@ -151,36 +153,8 @@ export default function VisionMission() {
           </div>
         </section>
 
-        {/* 呼召區塊 */}
-        <section className="py-10 md:py-16 bg-gradient-to-r from-gray-50 to-blue-50">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto"
-            >
-              <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-6">
-                與我們一同見證神的榮耀
-              </h2>
-              <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8">
-                歡迎您加入我們，一同在基督裡成長，成為神國度的見證人
-              </p>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-                <button className="px-6 py-2 md:px-8 md:py-3 bg-gradient-to-r from-pink-500 to-orange-400 text-white font-medium rounded-full hover:shadow-lg transform transition-all hover:scale-105 text-sm md:text-base">
-                  認識更多
-                </button>
-                <button className="px-6 py-2 md:px-8 md:py-3 bg-white text-gray-700 font-medium rounded-full border-2 border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all text-sm md:text-base">
-                  聚會時間
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
+
+      </>
+    </>
   )
 }

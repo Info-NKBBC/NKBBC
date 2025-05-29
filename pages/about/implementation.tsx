@@ -1,6 +1,5 @@
 import NavBar from '@/components/NavBar'
 import Implementation from '@/components/Implementation'
-import Footer from '@/components/Footer'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 
@@ -68,8 +67,6 @@ export default function ImplementationPage() {
         {/* 實行之路內容 */}
         <Implementation />
       </main>
-      
-      <Footer />
     </div>
   )
 }

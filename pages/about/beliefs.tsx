@@ -82,8 +82,6 @@ export default function Beliefs() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 } 

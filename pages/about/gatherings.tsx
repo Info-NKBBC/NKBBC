@@ -1,7 +1,6 @@
 import NavBar from '@/components/NavBar';
 import AboutSubNav from '@/components/AboutSubNav';
 import Gatherings from '@/components/Gatherings';
-import Footer from '@/components/Footer';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
@@ -50,8 +49,6 @@ export default function GatheringsPage() {
         {/* 聚會內容 */}
         <Gatherings />
       </main>
-      
-      <Footer />
     </div>
   );
 } 

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Calendar, MapPin, Pencil, Clock } from 'lucide-react';
 import { client, fetchQuery, getOptimizedImage } from '../../lib/sanity.client';
 import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
 import type { Event as EventType } from '../../types/event';
 import { PortableText } from '@portabletext/react';
 
@@ -240,7 +239,6 @@ export default function EventRegistration() {
           </div>
         </div>
       </main>
-      <Footer className="relative z-10" />
 
       {/* 報名表單彈窗 */}
       {selectedEvent && (

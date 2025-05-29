@@ -1,6 +1,5 @@
 import NavBar from '@/components/NavBar'
 import SmallGroup from '@/components/SmallGroup'
-import Footer from '@/components/Footer'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 
@@ -40,8 +39,6 @@ export default function Groups() {
         {/* 小組內容 */}
         <SmallGroup />
       </main>
-      
-      <Footer />
     </div>
   )
 }
