@@ -2,18 +2,14 @@ import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
 // 創建 Sanity 客戶端
+// 創建基本的 Sanity 客戶端
 export const client = createClient({
   projectId: 'von9yh08',        // 使用舊的專案 ID
   dataset: 'production',        // 資料集
   apiVersion: '2024-01-01',
   useCdn: true,                 // 公開資料建議設 true，抓 CDN
   token: process.env.SANITY_API_TOKEN, // 使用環境變量
-  onRateLimit: (err) => {
-    console.warn('Rate limit hit:', err);
-  },
-  onError: (err) => {
-    console.error('Sanity API Error:', err);
-  }
+  // 注意：移除了不支援的 onRateLimit 和 onError 選項
 })
 
 // 初始化圖片 URL 構建器
