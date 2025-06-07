@@ -82,10 +82,10 @@ export default function Footer({ className = '' }: FooterProps) {
               <div className="mt-6 pt-4 border-t border-gray-100">
                 <p className="text-sm font-medium text-gray-700 mb-3">關注我們</p>
                 <div className="flex space-x-4">
-                  <a href="#" className="transition-opacity hover:opacity-80">
-                    <Image src="/images/social/facebook.png" alt="Facebook" width={24} height={24} className="w-6 h-6" />
+                  <a href="https://lin.ee/nQ7s6dC" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
+                    <Image src="/images/social/line.png" alt="Line" width={24} height={24} className="w-6 h-6" />
                   </a>
-                  <a href="#" className="transition-opacity hover:opacity-80">
+                  <a href="https://www.instagram.com/info_nkbbc/" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
                     <Image src="/images/social/instagram.png" alt="Instagram" width={24} height={24} className="w-6 h-6" />
                   </a>
                   <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
@@ -143,10 +143,10 @@ export default function Footer({ className = '' }: FooterProps) {
                 透過真理的教導和生命的見證，將福音帶給每一個人。
               </p>
               <div className="flex space-x-4 pt-2">
-                <a href="#" className="transition-opacity hover:opacity-80">
-                  <Image src="/images/social/facebook.png" alt="Facebook" width={24} height={24} className="w-6 h-6" />
+                <a href="https://lin.ee/nQ7s6dC" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
+                  <Image src="/images/social/line.png" alt="Line" width={24} height={24} className="w-6 h-6" />
                 </a>
-                <a href="#" className="transition-opacity hover:opacity-80">
+                <a href="https://www.instagram.com/info_nkbbc/" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
                   <Image src="/images/social/instagram.png" alt="Instagram" width={24} height={24} className="w-6 h-6" />
                 </a>
                 <a href="https://www.youtube.com/@南科福氣教會/featured" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">

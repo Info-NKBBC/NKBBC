@@ -38,7 +38,7 @@ export default function EventRegistrationForm({
       console.log('Submitting registration:', { eventId, formData });
       
       // 使用新的 API 端點
-      const apiUrl = `${window.location.origin}/api/submit-registration`;
+      const apiUrl = `${window.location.origin}/api/submit-registration/`;
       console.log('Attempting to fetch:', apiUrl);
       
       response = await fetch(apiUrl, {

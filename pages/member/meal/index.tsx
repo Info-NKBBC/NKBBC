@@ -3,10 +3,12 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Calendar, MapPin, Users, Utensils } from 'lucide-react';
+import { Calendar, MapPin, Users, Utensils, Loader2 } from 'lucide-react';
 import NavBar from '@/components/NavBar';
+import AuthGuard from '@/components/AuthGuard';
+import { useSession } from 'next-auth/react';
 
-export default function MealRegistration() {
+function MealRegistrationContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.MouseEvent) => {
@@ -116,5 +118,13 @@ export default function MealRegistration() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function MealRegistration() {
+  return (
+    <AuthGuard>
+      <MealRegistrationContent />
+    </AuthGuard>
   );
 }
