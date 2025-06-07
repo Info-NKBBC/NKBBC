@@ -300,7 +300,7 @@ export default function GroupReportStatsTool() {
 
         {/** 搜尋框 + 小組下拉選單 **/}
         <Flex gap={3} wrap="wrap">
-          <Box flex={1} minWidth={250}>
+          <Box flex={1} width="250px">
             <input
               type="text"
               placeholder="搜尋小組或標題..."
