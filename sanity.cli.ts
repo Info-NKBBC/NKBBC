@@ -1,4 +1,5 @@
 import { defineCliConfig } from 'sanity/cli';
+import type { UserConfig } from 'vite';
 
 export default defineCliConfig({
   api: {
@@ -8,7 +9,7 @@ export default defineCliConfig({
   server: {
     port: 3333
   },
-  vite: (config) => ({
+  vite: (config: UserConfig) => ({
     ...config,
     base: '/studio'
   })
