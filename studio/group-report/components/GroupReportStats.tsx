@@ -80,9 +80,11 @@ export default function GroupReportStats() {
 
       <Grid columns={[1, 1, 2]} gap={4}>
         <Card padding={3} radius={2} shadow={1}>
-          <Text size={1} weight="semibold" marginBottom={3}>
-            各小組回報統計
-          </Text>
+          <Box marginBottom={3}>
+            <Text size={1} weight="semibold">
+              各小組回報統計
+            </Text>
+          </Box>
           <Stack space={2}>
             {stats.groups.map((group) => (
               <Flex key={group.name} align="center" justify="space-between" paddingY={2}>
@@ -97,11 +99,12 @@ export default function GroupReportStats() {
           </Stack>
         </Card>
 
-
         <Card padding={3} radius={2} shadow={1}>
-          <Text size={1} weight="semibold" marginBottom={3}>
-            最近回報
-          </Text>
+          <Box marginBottom={3}>
+            <Text size={1} weight="semibold">
+              最近回報
+            </Text>
+          </Box>
           <Stack space={2}>
             {stats.recentReports.map((report, index) => (
               <Flex key={index} align="center" justify="space-between" paddingY={2}>
