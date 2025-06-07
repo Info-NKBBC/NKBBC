@@ -48,6 +48,7 @@ interface RegistrationResponse {
   message: string;
   registrationId?: string;
   error?: string;
+  stack?: string;
 }
 
 const registrationHandler = async (req: NextApiRequest, res: NextApiResponse<RegistrationResponse>) => {
@@ -138,14 +139,20 @@ const registrationHandler = async (req: NextApiRequest, res: NextApiResponse<Reg
       response: error.response?.data,
     });
     
-    const statusCode = error.statusCode || 500;
-    const errorMessage = error.message || 'An unexpected error occurred';
-    res.status(statusCode).json({
+    const statusCode = (error as any).statusCode || 500;
+    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+    const errorResponse: RegistrationResponse = {
       success: false,
       message: '處理請求時發生錯誤',
       error: errorMessage,
-      stack: error.stack
-    });
+    };
+    
+    // 只在開發模式下包含 stack
+    if (process.env.NODE_ENV !== 'production' && error instanceof Error) {
+      errorResponse.stack = error.stack;
+    }
+    
+    res.status(statusCode).json(errorResponse);
     return;
   }
 };
