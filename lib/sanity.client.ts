@@ -1,16 +1,13 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
-// 前端 fetch 公開 Sanity 資料，千萬不要加 token
+// 創建 Sanity 客戶端
 export const client = createClient({
   projectId: 'von9yh08',        // 使用舊的專案 ID
   dataset: 'production',        // 資料集
   apiVersion: '2024-01-01',
   useCdn: true,                 // 公開資料建議設 true，抓 CDN
   token: process.env.SANITY_API_TOKEN, // 使用環境變量
-  retryOnRateLimit: true,       // 啟用速率限制重試
-  retryOnNetworkError: true,    // 啟用網路錯誤重試
-  ignoreBrowserTokenWarning: true, // 忽略瀏覽器 token 警告
   onRateLimit: (err) => {
     console.warn('Rate limit hit:', err);
   },
