@@ -19,13 +19,19 @@ export default function LoginPage() {
 
   useEffect(() => {
     const authError = searchParams.get('error');
+    const fromLogin = searchParams.get('fromLogin');
+    
     if (authError === 'CredentialsSignin') {
       setError('電子郵件或密碼錯誤，或尚未註冊');
     } else if (authError === 'AccountNotApproved') {
       setError('您的帳號尚未通過管理員審核，請稍後再試');
+    } else if (fromLogin) {
+      // 如果是從登入頁面重定向回來，但沒有錯誤，則不需要清除 session
+      return;
+    } else {
+      // 清除舊的 session cookie，但保留錯誤訊息
+      signOut({ redirect: false });
     }
-    // 每次進到登入頁都先清除任何舊的 session cookie
-    signOut({ redirect: false });
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,18 +42,31 @@ export default function LoginPage() {
       setError('請輸入電子郵件和密碼');
       return;
     }
+    
     setError('');
     setIsLoading(true);
 
     try {
-      // 呼叫 NextAuth 的 signIn，讓它自動帶上 callbackUrl
-      await signIn('credentials', {
-        redirect: true,
+      const result = await signIn('credentials', {
+        redirect: false,
         email,
         password,
-        callbackUrl: '/member/meal?fromLogin=1',
+        callbackUrl: '/member/group-report?fromLogin=1',
       });
-      // redirect: true 後，NextAuth 會自動跳轉到 /member/meal?fromLogin=1
+
+      if (result?.error) {
+        if (result.error === 'AccountNotApproved') {
+          setError('您的帳號尚未通過管理員審核，請稍後再試');
+        } else if (result.error === 'CredentialsSignin') {
+          setError('電子郵件或密碼錯誤，或尚未註冊');
+        } else {
+          setError('登入過程中發生錯誤，請稍後再試');
+        }
+        setIsLoading(false);
+      } else if (result?.url) {
+        // 登入成功，手動導向
+        window.location.href = result.url;
+      }
     } catch (err) {
       console.error('登入過程中發生錯誤：', err);
       setError('登入過程中發生錯誤，請稍後再試');
