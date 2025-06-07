@@ -9,7 +9,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
   // 1. URL 沒有 ?fromLogin=1 → 一律重導回登入頁
   if (fromLogin !== '1') {
-    const raw = context.resolvedUrl.split('?')[0] || '/member/meal';
+    const raw = context.req?.url?.split('?')[0] || '/member/meal';
     const encoded = encodeURIComponent(raw);
     return {
       redirect: {
@@ -22,7 +22,7 @@ export async function getServerSideProps(context: NextPageContext) {
   // 2. 帶了 fromLogin=1 才檢查 session
   const session = await getSession({ req: context.req });
   if (!session) {
-    const raw = context.resolvedUrl.split('?')[0] || '/member/meal';
+    const raw = context.req?.url?.split('?')[0] || '/member/meal';
     const encoded = encodeURIComponent(raw);
     return {
       redirect: {
