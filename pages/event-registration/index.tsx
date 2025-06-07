@@ -319,10 +319,23 @@ export default function EventRegistration() {
                             {/* object-left 讓圖片主要靠左，pr-8 增加右邊間距 */}
                             <div className="relative w-full h-48 md:h-56 lg:h-64">
                               <img
-                                src={getOptimizedImage(event.image, 800, 450, 80)}
-                                alt={event.title}
+                                src={event.image && typeof event.image === 'object' && 'asset' in event.image
+                                  ? getOptimizedImage({
+                                      _type: 'image',
+                                      asset: {
+                                        _ref: (event.image.asset as any)._ref || '',
+                                        _type: 'reference'
+                                      }
+                                    } as const, 800, 450, 80)
+                                  : ''}
+                                alt={event.title || '活動圖片'}
                                 className="absolute inset-0 w-full h-full object-cover object-left hover:scale-105 transition-transform duration-700"
                                 loading="lazy"
+                                onError={(e) => {
+                                  // 如果圖片加載失敗，使用一個空白的透明圖片
+                                  const target = e.target as HTMLImageElement;
+                                  target.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                                }}
                               />
                             </div>
                           </div>
