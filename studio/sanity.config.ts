@@ -115,9 +115,12 @@ export default defineConfig({
   projectId: 'von9yh08',
   dataset: 'production',
   basePath: '/studio',
-  useCdn: false,
+  useCdn: true,
   token: process.env.SANITY_API_TOKEN,
   apiVersion: '2024-01-01',
+  preview: {
+    secret: process.env.SANITY_PREVIEW_SECRET,
+  },
 
   plugins: [
     deskTool({
