@@ -117,10 +117,11 @@ export default async function handler(
     });
   } catch (error) {
     console.error('創建管理員錯誤:', error);
+    const errorMessage = error instanceof Error ? error.message : '未知錯誤';
     res.status(500).json({
       success: false,
       error: '創建管理員帳戶時出錯',
-      details: error.message,
+      details: errorMessage,
     });
   }
 }
