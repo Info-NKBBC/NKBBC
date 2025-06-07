@@ -9,8 +9,8 @@ import { useRouter } from 'next/router';
 import { client as sanityClient } from '@/lib/sanity.client';
 
 interface MemberReport {
-  memberId: string;    // 真正的 member document _id
-  memberName: string;  // 為了畫面呈現用的「組員姓名」
+  readonly memberId: string;    // 真正的 member document _id
+  readonly memberName: string;  // 為了畫面呈現用的「組員姓名」
   identity: string;
   devotion: boolean;
   cellGroup: boolean;
@@ -30,8 +30,15 @@ const identityOptions = [
   { value: 'member', label: '組員' },
 ];
 
+// 複選框組件的屬性類型
+interface CheckboxFieldProps {
+  label: string;
+  checked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 // 複選框組件
-const CheckboxField = ({ label, checked, onChange }) => (
+const CheckboxField: React.FC<CheckboxFieldProps> = ({ label, checked, onChange }) => (
   <label className="flex items-center space-x-2">
     <input
       type="checkbox"
@@ -43,8 +50,17 @@ const CheckboxField = ({ label, checked, onChange }) => (
   </label>
 );
 
+// 可修改的報表欄位類型
+type ReportField = Exclude<keyof MemberReport, 'memberId' | 'memberName'>;
+
+// 表格行元件的屬性類型
+interface TableRowProps {
+  r: MemberReport;
+  onReportChange: (memberId: string, field: ReportField, value: any) => void;
+}
+
 // 表格行組件
-const TableRow = ({ r, onReportChange }) => (
+const TableRow: React.FC<TableRowProps> = ({ r, onReportChange }) => (
   <tr className="border-t">
     <td className="py-2 px-3">{r.memberName}</td>
     <td className="py-2 px-3">
